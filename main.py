@@ -23,7 +23,12 @@ first_choice=computer_select[0]
 second_choice=computer_select[1]
 
 while not is_game_end:
-    user_guess=int(input("Who has more followers 1 or 2 ? : "))
+
+    print(f"\n{first_choice['name']},a {first_choice['description']} from {first_choice['country']}")
+    print(art.vs)
+    print(f"\n{second_choice['name']},a {second_choice['description']} from {second_choice['country']}")
+
+    user_guess=int(input("\nWho has more followers 1 or 2 ? : "))
    
     
     if user_guess==1 and first_choice['follower_count']>second_choice['follower_count']:
@@ -33,7 +38,11 @@ while not is_game_end:
     elif user_guess==2 and second_choice['follower_count']>first_choice['follower_count']:
         print(f"You guessed right! {second_choice['name']} has more followers ({second_choice['follower_count']}) than {first_choice['name']}({first_choice['follower_count']}).")
         score+=1
-
+    
+    elif user_guess==1 and first_choice['follower_count']<second_choice['follower_count']:
+        print(f"Sorry, that's wrong! {second_choice['name']} actually has more followers than {first_choice['name']}.")
+        is_game_end=True
+        print(f"Your score is {score}")
     else:
         print(f"Sorry, that's wrong! {first_choice['name']} actually has more followers than {second_choice['name']}.")
         is_game_end=True
